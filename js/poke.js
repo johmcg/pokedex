@@ -1,15 +1,18 @@
 $(document).ready(function () {
 
     $('#hit').click(function () {
-        var namePokemon = $('#term').val();
-        getPokemon(namePokemon);
-
+        let namePokemon = $('#term').val().toLowerCase();
+        if (namePokemon !== '') {
+            getPokemon(namePokemon);
+        }
     });
 
     $(document).on('keypress', function (e) {
-        if (e.which == 13) {
-            var namePokemon = $('#term').val();
-            getPokemon(namePokemon);
+        if (e.which === 13) {
+            let namePokemon = $('#term').val().toLowerCase();
+            if (namePokemon !== '') {
+                getPokemon(namePokemon);
+            }
         }
     });
 
@@ -24,6 +27,7 @@ function getPokemon(namePokemon) {
         cache: false,
         dataType: "json",
         beforeSend: function () {
+            $('#pokeInfo').html('Loading...');
         },
         success: function (result) {
             var imgAddress = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + result.id + ".png";
@@ -35,7 +39,7 @@ function getPokemon(namePokemon) {
                 "Height: " + (result.height * 0.3280839895).toFixed(0) + " ft </div></div>";
             $("#pokeInfo").html(pInfo);
         },
-        error: function (thrownError) {
+        error: function (xhr, status, error) {
             var pInfo =
                 "<div>" + "This pokemon does not exist!" + "</div>";
             $("#pokeInfo").html(pInfo);
