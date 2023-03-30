@@ -1,0 +1,18 @@
+@font-face {
+    font-family: pokemon solid;
+    font-style: normal;
+    font-weight: 400;
+    src: local('Pokemon Solid'), url('https://fonts.cdnfonts.com/s/17890/Pokemon Solid.woff') format('woff')
+}
+
+body {
+    font-family:pokemon solid;
+    background-color: #FF0000;
+    color: #FFDE00;
+    text-shadow: -1px -1px 0 #3B4CCA, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #3B4CCA;
+}
+
+html,
+body {
+    height: 100%
+}
