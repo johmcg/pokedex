@@ -4,6 +4,7 @@ $(document).ready(function () {
         let namePokemon = $('#term').val().toLowerCase();
         if (namePokemon !== '') {
             getPokemon(namePokemon);
+            $('#term').val('');
         }
     });
 
@@ -12,6 +13,7 @@ $(document).ready(function () {
             let namePokemon = $('#term').val().toLowerCase();
             if (namePokemon !== '') {
                 getPokemon(namePokemon);
+                $('#term').val('');
             }
         }
     });
