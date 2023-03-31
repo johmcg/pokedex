@@ -61,11 +61,18 @@ function getPokemon(namePokemon) {
                             dataType: "json",
                             success: function (result) {
                                 const evolutionLevel = result.chain.evolves_to[0].evolution_details[0].min_level;
-                                console.log(evolutionLevel); // Output: 16
-                                        $("#pokeInfo").html(pInfo);
-                                        pInfo +=
-                                            "<div> evolutionLevel: " + evolutionLevel + "</div></div>";
-                                            $("#pokeInfo").html(pInfo);
+                                        if (evolutionLevel === null){
+                                                                                                                       pInfo +=
+                                                                                                                            "<div>" + "evolutionLevel: Stone Needed" + "</div></div>";
+                                                                                                                            $("#pokeInfo").html(pInfo);}
+                                        else {
+
+                                                                                pInfo +=
+                                                                                    "<div> evolutionLevel: " + evolutionLevel + "</div></div>";
+                                                                                    $("#pokeInfo").html(pInfo);
+                                        }
+
+
 
                             }
 
