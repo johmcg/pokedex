@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    $('#suggestions').click(function () {
+        let namePokemon = $('#term').val().toLowerCase();
+        if (namePokemon !== '') {
+            getPokemon(namePokemon);
+            $('#term').val('');
+        }
+    });
 
     $('#hit').click(function () {
         let namePokemon = $('#term').val().toLowerCase();
@@ -17,7 +24,6 @@ $(document).ready(function () {
             }
         }
     });
-
 
 });
 
