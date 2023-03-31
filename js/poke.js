@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#suggestions').click(function () {
         let namePokemon = $('#term').val().toLowerCase();
         if (namePokemon !== '') {
@@ -25,14 +26,12 @@ $(document).ready(function () {
         }
     });
 
+
 });
 
 
 function getPokemon(namePokemon) {
-
-    var pokeID, pInfo ;
-
- $.ajax({
+    $.ajax({
         url: " https://pokeapi.co/api/v2/pokemon/" + namePokemon,
         type: "GET",
         cache: false,
@@ -49,36 +48,9 @@ function getPokemon(namePokemon) {
                 "Name: " + result.name + "</div><div>" +
                 "Type: " + result.types[0].type.name + "</div><div>" +
                 "Weight: " + (result.weight * 0.2204622622).toFixed(0) + " lb </div><div>" +
-                "Height: " + (result.height * 0.3280839895).toFixed(0) + " ft </div>";
-
-                pokeID = result.id;
-
-
-                $.ajax({
-                            url: "https://pokeapi.co/api/v2/evolution-chain/" + pokeID + "/",
-                            type: "GET",
-                            cache: false,
-                            dataType: "json",
-                            success: function (result) {
-                                const evolutionLevel = result.chain.evolves_to[0].evolution_details[0].min_level;
-                                        if (evolutionLevel === "null"){
-                                                                                                                       pInfo +=
-                                                                                                                            "<div>" + "evolutionLevel: Stone Needed" + "</div></div>";
-                                                                                                                            $("#pokeInfo").html(pInfo);}
-                                        else {
-
-                                                                                pInfo +=
-                                                                                    "<div> evolutionLevel: " + evolutionLevel + "</div></div>";
-                                                                                    $("#pokeInfo").html(pInfo);
-                                        }
-
-
-
-                            }
-
-                        });
-
-
+                "Height: " + (result.height * 0.3280839895).toFixed(0) + " ft </div></div>";
+            console.log(result.types[0].type.name);
+            $("#pokeInfo").html(pInfo);
         },
         error: function (xhr, status, error) {
             var pInfo =
@@ -86,11 +58,5 @@ function getPokemon(namePokemon) {
             $("#pokeInfo").html(pInfo);
         }
     });
-
-
-
-
-
-
 }
 
