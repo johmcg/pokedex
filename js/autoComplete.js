@@ -22,7 +22,7 @@ function autoComplete(inputValue) {
 }
 
 function addItem(value) {
-    ulField.innerHTML = ulField.innerHTML + `<li class = "p-1">${value}</li>`;
+    ulField.innerHTML = ulField.innerHTML + `<li class="p-1">${value}</li>`;
 }
 
 function selectItem({target}) {
