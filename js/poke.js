@@ -1,13 +1,15 @@
 $(document).ready(function () {
 
-
+/*
     $('#suggestions').click(function () {
         let namePokemon = $('#term').val().toLowerCase();
         if (namePokemon !== '') {
             getPokemon(namePokemon);
             $('#term').val('');
         }
-    });
+    }); */
+
+
 
     $(document).on('keypress', function (e) {
         if (e.which === 13) {
@@ -34,13 +36,19 @@ function getPokemon(namePokemon) {
         success: function (result) {
             var imgAddress = "https://img.pokemondb.net/artwork/" + result.name + ".jpg";
             getWeakness(result.types[0].type.name, function (weak) {
-                var pInfo = "<div> <div>" +
-                    "<img class=\"rounded\" src=\"" + imgAddress + "\"/>" + "</div><div>" +
-                    "Name: " + result.name + "</div><div>" +
-                    "Type: " + result.types[0].type.name + "</div><div>" +
-                    "Weaknesses: " + weak + "</div><div>" +
-                    "Weight: " + (result.weight * 0.2204622622).toFixed(0) + " lb </div><div>" +
-                    "Height: " + (result.height * 0.3280839895).toFixed(0) + " ft </div></div>";
+                var pInfo;
+                pInfo = "<div class=\"card \">\n" +
+                    " <img class=\"card-img-top h-10 \" src=\"" + imgAddress + "\" alt=\"Card image cap\">\n" +
+                    "  <div class=\"card-body\">\n" +
+                    "    <h5 class=\"card-title\">" + "Name: " + result.name + "</h5>\n" +
+                    "    <p class=\"card-text\">Type: " + result.types[0].type.name + "</p>\n" +
+                    "    <p class=\"card-text\">Weaknesses: " + weak + "</p>\n" +
+                    "    <p class=\"card-text\">Weight: " + (result.weight * 0.2204622622).toFixed(0) + " lb</p>\n" +
+                    "    <p class=\"card-text\">Height: " + (result.height * 0.3280839895).toFixed(0) + " ft</p>\n" +
+                    "  </div>\n" +
+                    "</div>";
+
+
                 $("#pokeInfo").html(pInfo);
             });
         },

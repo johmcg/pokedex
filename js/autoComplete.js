@@ -1,5 +1,5 @@
 let inputField = document.getElementById('term');
-let ulField = document.getElementById('suggestions');
+let ulField = document.getElementById('datalistOptions');
 inputField.addEventListener('input', changeAutoComplete);
 ulField.addEventListener('click', selectItem);
 
@@ -46,8 +46,12 @@ function autoComplete(inputValue) {
 }
 
 function addItem(value) {
-    ulField.innerHTML = ulField.innerHTML + `<li style=class = "p-1">${value}</li>`;
+    ulField.innerHTML = ulField.innerHTML + ` <option value=${value}>`;
 }
+
+
+
+
 
 function selectItem({target}) {
     if (target.tagName === 'LI') {
@@ -55,3 +59,4 @@ function selectItem({target}) {
         ulField.innerHTML = ``;
     }
 }
+
