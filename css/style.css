@@ -7,6 +7,9 @@
 
 body {
     font-family:pokemon solid;
+    background-color: #FF0000;
+    color: #FFDE00;
+    text-shadow: -1px -1px 0 #3B4CCA, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #3B4CCA;
 }
 
 
@@ -15,8 +18,6 @@ ul.no-bullets {
     margin: 0;
     padding: 0;
 }
-
-
 
 
 
